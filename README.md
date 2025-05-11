@@ -1,4 +1,4 @@
-# Apple Retail Sales SQL Project---Analyzing Millions of Sales Rerords
+# Apple Retail Sales SQL Project Analyzing Millions of Sales Rerords
 
 ![apple store](https://github.com/user-attachments/assets/d1bb9dcd-7789-4a74-822a-26ec61ff1433)
 
