@@ -145,6 +145,48 @@ CREATE TABLE warranty (
 -- Success Message
 SELECT 'Schema Created Successful' AS Success_Message;
 
+```
+# ✅ Business Problems & Solutions 
+## 📊 Basic to Intermediate
+
+```sql
+-- Q1. FIND THE NUMBER OF STORES IN EACH COUNTRY.
+
+SELECT country, COUNT(store_id) AS number_of_stores
+FROM stores
+GROUP BY country
+ORDER BY number_of_stores DESC;
+
+-- Q2. CALCULATE THE TOTAL NUMBER OF UNITS SOLD BY EACH STORE.
+
+SELECT s.store_id,st.store_name,SUM(s.quantity) AS total_units_sold
+FROM sales AS s
+JOIN stores AS st
+ON  s.store_id = st.store_id 
+GROUP BY s.store_id , st.store_name
+ORDER BY total_units_sold DESC;
+
+-- Q3. IDENTIFY HOW MANY SALES OCCURRED IN DECEMBER 2023.
+
+SELECT COUNT(sale_id) AS total_sales_dec23 
+FROM sales
+WHERE sale_date BETWEEN '2023-12-01' AND '2023-12-31';
+
+OR
+
+SELECT COUNT(*) AS total_sales_december_2023
+FROM sales
+WHERE sale_date >= '2023-12-01' AND sale_date < '2024-01-01';
+
+OR
+
+SELECT COUNT(*) AS total_sales_december_2023
+FROM sales
+WHERE TO_CHAR(sale_date,'MM-YYYY') = '12-2023';
+
+
+-- Q4. DETERMINE HOW MANY STORES HAVE NEVER HAD A WARRANTY CLAIM FILED.
 
 
 
+```
