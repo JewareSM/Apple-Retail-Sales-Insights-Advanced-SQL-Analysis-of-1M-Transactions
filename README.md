@@ -89,8 +89,9 @@ Captures all product sales transactions.
 # 🛠️ Database Setup
    The following SQL script creates the core database schema for the Apple Retail Sales & Warranty Analysis project. It includes table definitions, primary key constraints, and foreign key relationships.
 
+
+```sql
 -- DROP TABLE commands (to reset schema if re-run)
-```sql 
    DROP TABLE IF EXISTS warranty;
    DROP TABLE IF EXISTS sales;
    DROP TABLE IF EXISTS products;
