@@ -13,3 +13,4 @@ The project is ideal for data analysts looking to enhance their SQL skills by wo
 
 # Entity Relationship Diagram (ERD)
 
+![schema](https://github.com/user-attachments/assets/9e98efae-5512-4da5-8b05-72d82bfb0d2e)
