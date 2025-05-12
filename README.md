@@ -8,10 +8,12 @@
   queries.
 
 # 📊 What This Project Covers
-  This project offers a comprehensive hands-on experience with SQL in a real-world retail context. Key areas of focus include:
-
+  This project offers a comprehensive hands-on experience with SQL in a real-world retail context. Key areas of focus include :
+  
   ✅ Practical application of advanced SQL concepts (JOINs, aggregations, window functions, subqueries)
+  
   💼 Solving realistic business scenarios involving sales trends, product performance, and warranty behavior
+  
   🧠 Structured query writing, optimization, and performance analysis using EXPLAIN ANALYZE
 
 # 🚀 Project Overview
