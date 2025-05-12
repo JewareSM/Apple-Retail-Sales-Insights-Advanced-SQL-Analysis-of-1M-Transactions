@@ -26,7 +26,8 @@
 
 # 🧩 Entity Relationship Diagram (ERD)
 
-![schema](https://github.com/user-attachments/assets/9e98efae-5512-4da5-8b05-72d82bfb0d2e)
+
+![erd](https://github.com/user-attachments/assets/1b3def10-5586-4944-9e66-21d7027954a2)
 
 
 # 📊 Database Schema
