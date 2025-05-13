@@ -187,6 +187,76 @@ WHERE TO_CHAR(sale_date,'MM-YYYY') = '12-2023';
 
 -- Q4. DETERMINE HOW MANY STORES HAVE NEVER HAD A WARRANTY CLAIM FILED.
 
+SELECT COUNT(*) AS stores_without_claims
+FROM  stores
+WHERE store_id NOT IN
+(
+	SELECT DISTINCT store_id
+	FROM sales AS s
+	RIGHT JOIN warranty AS w
+	ON s.sale_id = w.sale_id
+);
+
+-- Q5. CALCULATE THE PERCENTAGE OF WARRANTY CLAIMS MARKED AS "Warranty Void".
+
+SELECT 
+		ROUND(COUNT(claim_id)/ (SELECT COUNT(*) FROM warranty):: "numeric" * 100,2) AS warranty_void_percentage
+FROM warranty
+WHERE repair_status = 'Warranty Void';
+
+-- Q6. IDENTIFY WHICH STORE HAD THE HIGHEST TOTAL UNIT SOLD IN THE LAST YEAR.
+
+SELECT 
+		s.store_id,
+		st.store_name,
+		SUM(s.quantity) AS total_units_sold
+FROM sales AS s
+JOIN stores AS st
+ON s.store_id = st.store_id 
+WHERE sale_date >= CURRENT_DATE - INTERVAL '1 year'
+GROUP BY s.store_id, st.store_name
+ORDER BY  total_units_sold DESC
+LIMIT 1;
+
+-- Q7. COUNT THE NUMBER OF UNIQUE PRODUCTS SOLD IN THE LAST YEAR.
+
+SELECT 
+		COUNT(DISTINCT(product_id)) AS unique_product_sold
+FROM sales
+WHERE sale_date >= (CURRENT_DATE - INTERVAL '1 year');
+
+
+-- Q8. FIND THE AVERAGE PRICE OF PRODUCTS IN EACH CATEGORY.
+
+SELECT 
+		c.category_id, 
+		c.category_name, 
+		AVG(p.price) AS average_price
+FROM category c
+JOIN products p
+ON c.category_id = p.category_id
+GROUP BY c.category_id, c.category_name
+ORDER BY average_price DESC;
+
+-- Q9. HOW MANY WARRANTY CLAIMS WERE FILED IN 2020.
+
+SELECT COUNT(*) AS warranty_claim
+FROM warranty
+WHERE EXTRACT(YEAR FROM claim_date) = 2020;
+
+-- Q10. FOR EACH STORE, IDENTIFY THE BEST-SELLING DAY BASED ON HIGHEST QUANTITY SOLD.
+
+SELECT *FROM
+(
+	SELECT store_id, TO_CHAR(sale_date, 'Day') AS day_name, SUM(quantity) AS total_unit_sold,
+	RANK() OVER(PARTITION BY store_id ORDER BY SUM(quantity) DESC) AS rank
+	FROM sales
+	GROUP BY store_id, day_name
+) AS t1
+WHERE rank=1;
+
+
+
 
 
 ```
